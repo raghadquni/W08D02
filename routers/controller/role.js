@@ -16,6 +16,18 @@ const createRole = (req, res) => {
     });
 };
 
+const getRole = (req, res) => {
+    roleModel
+    .find({})
+    .then((result) => {
+        res.send(result);
+    })
+    .catch((err) => {
+        res.send(err)
+    })
+}
+
 module.exports = {
   createRole,
+  getRole,
 };
