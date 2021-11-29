@@ -16,4 +16,11 @@ To hide sensitive information
 npm i dotenv
 ```
 
+* **nodemon**
+
+To Refresh the server automatically
+``` 
+npm i nodemon
+```
+
 
