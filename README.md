@@ -3,7 +3,7 @@ Register/Login project with authentication and authorization
 
 # Packages used 
 
-1. **express**
+* **express**
 
 To bulid Server
 ``` 
