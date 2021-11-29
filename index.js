@@ -7,6 +7,9 @@ const db = require("./db/index.js");
 const app = express();
 app.use(express.json());
 
+const roleRouter = require("./routers/routes/role")
+app.use(roleRouter)
+
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`SERVER RUN ON PORT ${PORT}`);
