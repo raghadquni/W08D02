@@ -23,4 +23,11 @@ To Refresh the server automatically
 npm i nodemon
 ```
 
+* **mongoose**
+
+To save our database and the possibility to use it
+
+``` 
+npm i mongoose
+```
 
