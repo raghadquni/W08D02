@@ -41,3 +41,12 @@ To encrypt passwords
 ``` 
 npm i bcrypt
 ```
+
+
+* **jsonwebtoken**
+
+encode and decode for Node.js
+
+``` 
+npm i jsonwebtoken
+```
