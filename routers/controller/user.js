@@ -1,11 +1,19 @@
 const userModel = require("../../db/models/user");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
-const register = (req, res) => {
+
+const salt = Number(process.env.SALT); 
+
+const register = async (req, res) => {
   const { email, password, role } = req.body;
 
-  const newUser = new userModel({
-    email,
-    password,
+  const savedEmail = email.toLowerCase();
+  const savedPassword = await bcrypt.hash(password, salt);
+
+const newUser = new userModel({
+    email: savedEmail,
+    password: savedPassword,
     role,
   });
   newUser
@@ -32,6 +40,7 @@ const getUsers = (req, res) => {
 
 const login = (req, res) => {
     const { email, password } = req.body;
+    
     userModel
     .findOne({ email })
     .then((result) => {
