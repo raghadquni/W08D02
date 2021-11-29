@@ -17,15 +17,15 @@ const createRole = (req, res) => {
 };
 
 const getRole = (req, res) => {
-    roleModel
+  roleModel
     .find({})
     .then((result) => {
-        res.send(result);
+      res.send(result);
     })
     .catch((err) => {
-        res.send(err)
-    })
-}
+      res.send(err);
+    });
+};
 
 module.exports = {
   createRole,

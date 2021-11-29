@@ -1,8 +1,6 @@
 const userModel = require("../../db/models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { options } = require("../routes/role");
-
 
 const secret = process.env.SECRET_KEY;
 
@@ -13,7 +11,7 @@ const register = async (req, res) => {
   const savedEmail = email.toLowerCase();
   const savedPassword = await bcrypt.hash(password, salt);
 
-const newUser = new userModel({
+  const newUser = new userModel({
     email: savedEmail,
     password: savedPassword,
     role,
@@ -29,20 +27,19 @@ const newUser = new userModel({
 };
 
 const getUsers = (req, res) => {
-    userModel
-      .find({})
-      .then((result) => {
-        res.send(result);
-      })
-      .catch((err) => {
-        res.send(err);
-      });
-  };
-
+  userModel
+    .find({})
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+};
 
 const login = (req, res) => {
-    const { email, password } = req.body;
-      const savedEmail = email.toLowerCase();
+  const { email, password } = req.body;
+  const savedEmail = email.toLowerCase();
   userModel
     .findOne({ email: savedEmail })
     .then(async (result) => {
@@ -55,8 +52,8 @@ const login = (req, res) => {
 
           if (hashedPass) {
             const options = {
-                expiresIn : "60m"
-            }; 
+              expiresIn: "60m",
+            };
             let token = jwt.sign(payload, secret, options);
             res.status(200).json({ result, token });
           } else {
@@ -74,6 +71,4 @@ const login = (req, res) => {
     });
 };
 
-
-
-module.exports = {register, getUsers, login}
+module.exports = { register, getUsers, login };
